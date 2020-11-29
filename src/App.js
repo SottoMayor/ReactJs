@@ -8,11 +8,20 @@ class App extends Component {
       persons: [
         {name: 'David', age: 20},
         {name: 'Walter', age: 23}
-      ]
+      ],
+      otherState: 'I\'m other state!'
+      //the otherState will be preserved, when persons will be merged!
   }
 
   switchNameHandler = () => {
-    console.log('Clicked!')
+    this.setState({
+      persons: [
+        {name: 'David', age: 20},
+        {name: 'Victor', age: 22}
+      ]
+    })
+
+    // Error!!!! if -> this.state.persons[1].name = 'Victor'
   }
 
   render() {
