@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.App{
+    position: absolute;
+    left: 40%;
+    top: 30%;
+    transform: translate(-40%, -30%);
+}

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
+import Person from './Person/Person';
 
 class App extends Component {
   render() {
     return (
-      //OBS 'class' in JSX do not exist! But exist 'className'.
+      // In this form the code is much maintainable and reusable and configurable!! Amazing...
       <div className="App">
         <h1>Hello World!</h1>
         <p>This is realy working!</p>
+        <Person/>
+        <Person/>
+        <Person/>
+        <Person/>        
       </div>
-      //<p>This is not working!!!!</p>
     );
   }
 }
