@@ -1,40 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-class App extends Component {
+const app = props => {
 
-  state = {
+  const [personsState, setPersonsState] = 
+      useState ({
       persons: [
         {name: 'David', age: 20},
         {name: 'Walter', age: 23}
-      ],
-      otherState: 'I\'m other state!'
-      //the otherState will be preserved, when persons will be merged!
-  }
+      ]
+    })
 
-  switchNameHandler = () => {
-    this.setState({
+    const [otherState, setOtherState] = 
+      useState ('I\'m other state!')
+
+    console.log(personsState, otherState);
+
+  const switchNameHandler = () => {
+    setPersonsState({
       persons: [
         {name: 'David', age: 20},
         {name: 'Victor', age: 22}
       ]
     })
+    }
 
-    // Error!!!! if -> this.state.persons[1].name = 'Victor'
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <h1>Hello World!</h1>
-        <p>This is realy working!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>  
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Hobbies: Racing and play guitar</Person>       
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <h1>Hello World!</h1>
+      <p>This is realy working!</p>
+      <button onClick={switchNameHandler}>Switch Name</button>
+      <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>  
+      <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>Hobbies: Racing and play guitar</Person>       
+    </div>
+    )
 }
 
-export default App;
+export default app;
