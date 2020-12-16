@@ -5,7 +5,9 @@ const person = (props) => {
     // Dynamic content in JSX, we use '{expression}' into JSX.
     return(
         <div>
-            <p>I'm {props.name} and I'm {props.age} years old. {props.children}</p>
+            <p onClick={props.click}>I'm {props.name} and I'm {props.age} years old. {props.children}</p>
+
+            <input type='text' onChange={props.change} value={props.name} />
         </div>
     );
 
