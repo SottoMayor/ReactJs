@@ -21,14 +21,14 @@ const app = props => {
     })
     }
 
-    const changeNameHandler = (event) => {
-      setPersonsState({
-        persons: [
-          {name: event.target.value, age: 20},
-          {name: 'Victor', age: 22}
-        ]
-      })
-      }
+  const changeNameHandler = (event) => {
+    setPersonsState({
+      persons: [
+        {name: event.target.value, age: 20},
+        {name: 'Victor', age: 22}
+      ]
+    })
+  }
 
     const style = {
       backgroundColor: 'white',
@@ -39,15 +39,10 @@ const app = props => {
       margin: '10px 0'
     }
 
+    let persons = null;
 
-  return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <p>This is realy working!</p>
-      <button style={style} onClick={() => togglePersons()}>Persons toggle</button>
-
-      { (showPersons.showPersons) ? 
-
+    if (showPersons.showPersons){
+      persons = (
         <div>
 
           <Person change={changeNameHandler}
@@ -56,9 +51,17 @@ const app = props => {
           name={personsState.persons[1].name} age={personsState.persons[1].age}>Hobbies: Racing and play guitar</Person>
 
         </div>
-        : null
-     }
-       
+      )
+    }
+
+  return (
+    <div className="App">
+      <h1>Hello World!</h1>
+      <p>This is realy working!</p>
+      <button style={style} onClick={() => togglePersons()}>Persons toggle</button>
+
+      {persons}
+        
     </div>
     )
 }
