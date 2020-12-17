@@ -21,12 +21,24 @@ const app = props => {
     })
     }
 
-  const changeNameHandler = (event) => {
+  const changeNameHandler = (event, id) => {
+
+    const personIndex = personsState.persons.findIndex( person => {
+      return person.id === id;
+    });
+
+    const person = {
+      ...personsState.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...personsState.persons]; 
+
+    persons[personIndex] = person; 
+
     setPersonsState({
-      persons: [
-        {name: event.target.value, age: 20},
-        {name: 'Victor', age: 22}
-      ]
+      persons: persons
     })
   }
 
@@ -58,7 +70,8 @@ const app = props => {
 
           {
             personsState.persons.map( (person, index) => {
-              return < Person key={person.id} name={person.name} age={person.age} click={() => deletePerson(index)} />
+              return < Person key={person.id} name={person.name} 
+              age={person.age} click={() => deletePerson(index)} change={(event) => changeNameHandler(event, person.id)} />
             })
           }
 
