@@ -7,8 +7,8 @@ const app = props => {
   const [personsState, setPersonsState] = 
       useState ({
       persons: [
-        {name: 'David', age: 20},
-        {name: 'Walter', age: 23}
+        {name: 'David', age: 20, id:'person1'},
+        {name: 'Walter', age: 23, id:'person2'}
       ]
     })
 
@@ -31,7 +31,9 @@ const app = props => {
   }
 
   const deletePerson = (index) => {
-    const persons = personsState.persons;
+    // Good practice: create a array copy and work with it...
+
+    const persons = [...personsState.persons];
     persons.splice(index, 1)
     setPersonsState({
       persons: persons
@@ -56,7 +58,7 @@ const app = props => {
 
           {
             personsState.persons.map( (person, index) => {
-              return < Person name={person.name} age={person.age} click={() => deletePerson(index)} />
+              return < Person key={person.id} name={person.name} age={person.age} click={() => deletePerson(index)} />
             })
           }
 
