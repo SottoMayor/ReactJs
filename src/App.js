@@ -12,13 +12,12 @@ const app = props => {
       ]
     })
 
+  const [showPersons, setShowPersons] = useState( {showPersons: false} );
 
-  const switchNameHandler = (newName) => {
-    setPersonsState({
-      persons: [
-        {name: newName, age: 20},
-        {name: 'Victor', age: 22}
-      ]
+  const togglePersons = () => {
+    const doesChange = showPersons.showPersons
+    setShowPersons({
+      showPersons: !(doesChange)
     })
     }
 
@@ -45,11 +44,21 @@ const app = props => {
     <div className="App">
       <h1>Hello World!</h1>
       <p>This is realy working!</p>
-      <button style={style} onClick={() => switchNameHandler('Davizim')}>Switch Name</button>
-      <Person change={changeNameHandler}
-       name={personsState.persons[0].name} age={personsState.persons[0].age}/>  
-      <Person  click={() => switchNameHandler('Soltinho')} 
-       name={personsState.persons[1].name} age={personsState.persons[1].age}>Hobbies: Racing and play guitar</Person>       
+      <button style={style} onClick={() => togglePersons()}>Persons toggle</button>
+
+      { (showPersons.showPersons) ? 
+
+        <div>
+
+          <Person change={changeNameHandler}
+          name={personsState.persons[0].name} age={personsState.persons[0].age}/>  
+          <Person 
+          name={personsState.persons[1].name} age={personsState.persons[1].age}>Hobbies: Racing and play guitar</Person>
+
+        </div>
+        : null
+     }
+       
     </div>
     )
 }
