@@ -42,13 +42,15 @@ const app = props => {
     let persons = null;
 
     if (showPersons.showPersons){
-      persons = (
+      persons = 
+      (
         <div>
 
-          <Person change={changeNameHandler}
-          name={personsState.persons[0].name} age={personsState.persons[0].age}/>  
-          <Person 
-          name={personsState.persons[1].name} age={personsState.persons[1].age}>Hobbies: Racing and play guitar</Person>
+          {
+            personsState.persons.map( person => {
+              return < Person name={person.name} age={person.age} />
+            })
+          }
 
         </div>
       )
