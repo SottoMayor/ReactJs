@@ -84,10 +84,19 @@ const app = props => {
 
     }
 
+    const classes = [];
+    if(personsState.persons.length <=2 ){
+      classes.push('red');
+    }
+    if(personsState.persons.length <= 1){
+      classes.push('bold')
+    }
+
+
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <p>This is realy working!</p>
+      <p className={classes.join(' ')}>This is realy working!</p>
       <button style={style} onClick={() => togglePersons()}>Persons toggle</button>
 
       {persons}
