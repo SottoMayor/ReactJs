@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import styled from 'styled-components';
 
 const app = props => {
 
@@ -62,6 +63,21 @@ const app = props => {
       margin: '10px 0'
     }
 
+    const StyledButton = styled.button`
+      background-color: green;
+      color: white;
+      font: inherit;
+      border: 1px solid blue;
+      padding: 8px;
+      cursor: pointer;
+      margin: 10px 0;
+
+      &:hover {
+        background-color: red;
+        color: black;
+      }
+    `;
+
     let persons = null;
 
     if (showPersons.showPersons){
@@ -79,9 +95,6 @@ const app = props => {
         </div>
       )
 
-      style.backgroundColor = 'red';
-      style.boxShadow = '0 0 6px rgba(0, 0, 0, 0.7)'
-
     }
 
     const classes = [];
@@ -97,7 +110,7 @@ const app = props => {
     <div className="App">
       <h1>Hello World!</h1>
       <p className={classes.join(' ')}>This is realy working!</p>
-      <button style={style} onClick={() => togglePersons()}>Persons toggle</button>
+      <StyledButton onClick={() => togglePersons()}>Persons toggle</StyledButton>
 
       {persons}
         
