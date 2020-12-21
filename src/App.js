@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import styled from 'styled-components';
 
 const app = props => {
 
@@ -53,30 +52,6 @@ const app = props => {
     })
   }
 
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      margin: '10px 0'
-    }
-
-    const StyledButton = styled.button`
-      background-color: ${props => props.alt ? 'red' : 'green'};
-      color: white;
-      font: inherit;
-      border: 1px solid blue;
-      padding: 8px;
-      cursor: pointer;
-      margin: 10px 0;
-
-      &:hover {
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-        color: black;
-      }
-    `;
 
     let persons = null;
 
@@ -95,11 +70,6 @@ const app = props => {
         </div>
       )
 
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
 
     }
 
@@ -116,7 +86,7 @@ const app = props => {
     <div className="App">
       <h1>Hello World!</h1>
       <p className={classes.join(' ')}>This is realy working!</p>
-      <StyledButton alt={showPersons.showPersons} onClick={() => togglePersons()}>Persons toggle</StyledButton>
+      <button className='button' onClick={() => togglePersons()}>Persons toggle</button>
 
       {persons}
         
