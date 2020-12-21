@@ -64,7 +64,7 @@ const app = props => {
     }
 
     const StyledButton = styled.button`
-      background-color: green;
+      background-color: ${props => props.alt ? 'red' : 'green'};
       color: white;
       font: inherit;
       border: 1px solid blue;
@@ -73,7 +73,7 @@ const app = props => {
       margin: 10px 0;
 
       &:hover {
-        background-color: red;
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
         color: black;
       }
     `;
@@ -95,6 +95,12 @@ const app = props => {
         </div>
       )
 
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+
     }
 
     const classes = [];
@@ -110,7 +116,7 @@ const app = props => {
     <div className="App">
       <h1>Hello World!</h1>
       <p className={classes.join(' ')}>This is realy working!</p>
-      <StyledButton onClick={() => togglePersons()}>Persons toggle</StyledButton>
+      <StyledButton alt={showPersons.showPersons} onClick={() => togglePersons()}>Persons toggle</StyledButton>
 
       {persons}
         
