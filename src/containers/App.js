@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import  classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 const app = props => {
 
@@ -54,41 +55,24 @@ const app = props => {
 
 
     let persons = null;
-    let btnClass = ''
 
     if (showPersons.showPersons){
       persons = 
       (
         <div>
 
-          {
-            personsState.persons.map( (person, index) => {
-              return < Person key={person.id} name={person.name} 
-              age={person.age} click={() => deletePerson(index)} change={(event) => changeNameHandler(event, person.id)} />
-            })
-          }
+          <Persons persons={personsState.persons} clicked={deletePerson} changed={changeNameHandler} />
 
         </div>
       )
 
-      btnClass = classes.Red
-
-    }
-
-    const assignedClasses = [];
-    if(personsState.persons.length <=2 ){
-      assignedClasses.push(classes.red);
-    }
-    if(personsState.persons.length <= 1){
-      assignedClasses.push(classes.bold)
     }
 
 
   return (
     <div className={classes.App}>
-      <h1>Hello World!</h1>
-      <p className={assignedClasses.join(' ')}>This is realy working!</p>
-      <button className={btnClass} onClick={() => togglePersons()}>Persons toggle</button>
+      
+      <Cockpit showPersons={showPersons.showPersons} persons={personsState.persons} toggled={togglePersons} />
 
       {persons}
         
