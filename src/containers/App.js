@@ -72,7 +72,7 @@ const app = props => {
   return (
     <div className={classes.App}>
       
-      <Cockpit showPersons={showPersons.showPersons} persons={personsState.persons} toggled={togglePersons} />
+      <Cockpit title={props.appTitle} showPersons={showPersons.showPersons} persons={personsState.persons} toggled={togglePersons} />
 
       {persons}
         
