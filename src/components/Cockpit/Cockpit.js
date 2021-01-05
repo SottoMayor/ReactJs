@@ -10,11 +10,18 @@ const cockpit = ( props ) => {
 
       setTimeout( () => {
         alert('Saved data to cloud! :)');
-      }, 1000)
-      // The array [a, b, c] in the second argument controls the dependencies...
-      // Ex: [props.person] controls the dependencies of persons!
-      // in that way, if we set [] we exect this component only in the first render time!!!!
+      }, 1000);
+      return () => {
+        console.log('[Cockpit.js] Cleanup work in useEffect!');
+      }
     }, [])
+
+    useEffect(() =>{
+      console.log('[Cockpit.Js] 2nd useEffect');
+      return () => {
+        console.log('[Cockpit.js] Cleanup work in 2nd useEffect!');
+      }
+    })
 
     const assignedClasses = [];
     let btnClass = '';
