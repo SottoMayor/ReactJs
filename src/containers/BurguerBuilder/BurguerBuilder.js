@@ -8,7 +8,7 @@ import BuildControls from '../../components/Burguer/BuildControls/BuildControls'
 
 const INGREDIENTS_PRICE = {
     salad: 0.5,
-    chesse: 0.4,
+    cheese: 0.4,
     meat: 1.3,
     bacon: 0.7
 }
@@ -45,15 +45,44 @@ class BurguerBuilder extends Component{
         })
     }
 
+    removeIngredientHandler = type => {
+        //att the ingredients
+        const oldCount = this.state.ingredients[type];
+        if(oldCount <= 0){
+            return;
+        }
+        const newCount = oldCount - 1;
+        const updatedIngredients = {...this.state.ingredients};
+
+        updatedIngredients[type] = newCount;
+
+        //att the total price
+        const priceDeduction = INGREDIENTS_PRICE[type];
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice - priceDeduction;
+
+        //setState
+        this.setState({ingredients: updatedIngredients, totalPrice: newPrice})
+    }
+
     render(){
+
+        const disabledInfo = {...this.state.ingredients};
+        for (let element in disabledInfo){
+            disabledInfo[element] = disabledInfo[element] <= 0
+        }
+
         return(
 
             <Auxiliary>
 
                 <Burguer ingredients={this.state.ingredients}/>
 
-                <BuildControls ingredientAdded={this.addIngredientHandler}/>
+                <BuildControls ingredientAdded={this.addIngredientHandler} 
+                ingredientRemoved={this.removeIngredientHandler}
+                disabled={disabledInfo}/>
 
+                {this.state.totalPrice}
             </Auxiliary>
 
         );
