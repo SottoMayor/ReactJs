@@ -6,12 +6,19 @@ import BurguerIngredient from './BurguerIngredient/BurguerIngredient';
 
 const burguer = props => {
 
+    const transformedIngredients = Object.keys(props.ingredients)
+    .map(ingKey => {
+       return [...Array(props.ingredients[ingKey])].map((_, index) => {
+           return <BurguerIngredient key={ingKey + index} type={ingKey} />
+        })
+    })
+
     return(
         <div className={classes.Burguer}>
-
             <BurguerIngredient type='bread-top' />
-            <BurguerIngredient type='cheese' />
-            <BurguerIngredient type='meat' />
+            {
+                transformedIngredients
+            }
             <BurguerIngredient type='bread-bottom' />
 
         </div>
