@@ -1,6 +1,6 @@
 .BuildControl {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 5px 0;
 }
@@ -9,7 +9,7 @@
     display: block;
     font: inherit;
     padding: 5px;
-    margin: 0 5px;
+    margin: 0 10px;
     width: 80px;
     border: 1px solid #AA6817;
     cursor: pointer;
