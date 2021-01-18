@@ -1,4 +1,3 @@
-import { element } from 'prop-types';
 import React from 'react';
 
 import classes from './Burguer.module.css';
