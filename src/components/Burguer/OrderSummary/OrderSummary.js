@@ -8,7 +8,7 @@ const orderSummary = props => {
 
     const ingredientSummary = Object.keys(props.ingredients)
     .map(ingKey => {
-        return <li key={ingKey}> <span style={{textTransform: 'capitalize'}} > {ingKey} </span> {props.ingredients[ingKey]} </li>
+        return <li key={ingKey}> <span style={{textTransform: 'capitalize'}} > {ingKey} :</span> {props.ingredients[ingKey]} </li>
     })
 
     return(
@@ -21,6 +21,8 @@ const orderSummary = props => {
             <ul>
                 {ingredientSummary}
             </ul>
+
+            <p><strong>The total price</strong>: {props.price.toFixed(2)}</p>
 
             <p>Continue to Checkout?</p>
 
