@@ -19,13 +19,10 @@ class Layout extends Component{
     }
 
     sideDrawerToggleHandler = () => {
-        // Fix a possible bug!
-        //let stateControl = this.state.showSideDrawer;
-        //this.setState({showSideDrawer: !(stateControl)});
         this.setState((prevState) => {
             return {showSideDrawer: !prevState.showSideDrawer}
         })
-        
+
     }
 
     render() {
