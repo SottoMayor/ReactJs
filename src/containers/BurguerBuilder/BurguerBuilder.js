@@ -10,6 +10,8 @@ import Modal from '../../components/UI/Modal/Modal';
 
 import OrderSummary from '../../components/Burguer/OrderSummary/OrderSummary';
 
+import axios from '../../axios-orders';
+
 const INGREDIENTS_PRICE = {
     salad: 0.5,
     cheese: 0.4,
@@ -101,7 +103,25 @@ class BurguerBuilder extends Component{
     }
 
     purchaseContinueHandler = () => {
-        alert('You are continue!');
+
+        const order = {
+            ingredients : this.state.ingredients,
+            price : this.state.totalPrice,
+            customer: {
+                name: 'David',
+                address: {
+                    number: 0,
+                    street: 'Dummy',
+                    city: 'Lorem Ipsum'
+                },
+                email: 'test@test.com',
+            },
+            deliveryFee: 'free'
+        }
+
+        axios.post('/orders.json', order)
+        .then(result => {console.log(result)})
+        .catch(err => {console.log(err)});
     }
 
     render(){
