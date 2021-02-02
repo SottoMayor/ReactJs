@@ -8,17 +8,17 @@ import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 
 class Modal extends Component {
 
-    shouldComponentUpdate(nextProps, nextState){
-        return nextProps.show !== this.props.show;
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         console.log('[MODAL] - Will Update');
     }
 
     render() {
 
-        return(
+        return (
 
             <Auxiliary>
 
