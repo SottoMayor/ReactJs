@@ -150,6 +150,7 @@ class BurguerBuilder extends Component{
             })
         });
         */
+       this.props.history.push('/checkout');
     }
 
     render(){
