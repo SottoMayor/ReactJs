@@ -116,6 +116,7 @@ class BurguerBuilder extends Component{
 
     purchaseContinueHandler = () => {
 
+        /*
         this.setState({
             loading: true
         })
@@ -148,6 +149,7 @@ class BurguerBuilder extends Component{
                 purchasing: false
             })
         });
+        */
     }
 
     render(){

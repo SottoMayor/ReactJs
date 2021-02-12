@@ -14,17 +14,17 @@ class App extends Component {
     return (
       <div>
 
-          <Layout>
+        <Layout>
 
-            <Switch>
+          <Switch>
 
-              <Route path='/checkout' component={ <Checkout/> } />
+            <Route path='/checkout' component={ Checkout } />
 
-              <Route path='/' /*exact*/ component={ <BurguerBuilder/> } />
+            <Route path='/' /*exact*/ component={ BurguerBuilder } />
 
-            </Switch>
+          </Switch>
 
-          </Layout>
+        </Layout>
 
       </div>
     )
