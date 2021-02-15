@@ -34,7 +34,7 @@ class BurguerBuilder extends Component{
         error: false
     }
 
-    componentDidMount(){
+    componentWillMount(){
 
         axios.get('https://react-burger-builder-br-default-rtdb.firebaseio.com/ingredients.json')
         .then(response => {
@@ -116,41 +116,6 @@ class BurguerBuilder extends Component{
 
     purchaseContinueHandler = () => {
 
-        /*
-        this.setState({
-            loading: true
-        })
-
-        const order = {
-            ingredients : this.state.ingredients,
-            price : this.state.totalPrice,
-            customer: {
-                name: 'David',
-                address: {
-                    number: 0,
-                    street: 'Dummy',
-                    city: 'Lorem Ipsum'
-                },
-                email: 'test@test.com',
-            },
-            deliveryFee: 'free'
-        }
-
-        axios.post('/orders.json', order)
-        .then(result => {
-            this.setState({
-                loading: false,
-                purchasing: false
-            })
-        })
-        .catch(err => {
-            this.setState({
-                loading: false,
-                purchasing: false
-            })
-        });
-        */
-
         const queryParams = [];
         
         for( let i in this.state.ingredients ){
@@ -158,6 +123,8 @@ class BurguerBuilder extends Component{
             queryParams.push( encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]) )
 
         }
+
+        queryParams.push('price='+ this.state.totalPrice);
 
         const queryString = queryParams.join('&');
 
