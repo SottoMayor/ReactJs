@@ -6,6 +6,8 @@ import axios from '../../axios-orders';
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 class Orders extends Component {
 
     state = {
@@ -35,10 +37,31 @@ class Orders extends Component {
     
 
     render() {
+
+        const totalPrice = this.state.orders.map( orderObj => {
+            return orderObj.price
+        }).reduce((sum, indexTotalPrice) => {
+            return (sum + (+indexTotalPrice))
+        }, 0)
+
+        let showUI = <Spinner/>;
+        if(this.state.loading === false){
+            showUI = (
+                <div>
+                {
+                this.state.orders.map(order => {
+                    return <Order key={order.id} ingredients={order.ingredients} price={order.price}/>
+                })
+                }
+
+                <p style={{textAlign:'center', width:'100%'}} >Total Price: <strong>{totalPrice.toFixed(2)}</strong></p>
+            </div>
+            )
+        }
+
         return (
             <div>
-                <Order/>
-                <Order/>
+                {showUI}
             </div>
         )
     }
