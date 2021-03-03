@@ -8,6 +8,8 @@ import axios from '../../../axios-orders';
 
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
+import Input from '../../../components/UI/Input/Input';
+
 class contactData extends Component {
 
     state = {
@@ -64,12 +66,12 @@ class contactData extends Component {
         let form = (
             <form>
 
-                    <input className={classes.Input} type='text' name='name' placeholder='Name' />
-                    <input className={classes.Input} type='email' name='email' placeholder='Email' />
-                    <input className={classes.Input} type='text' name='street' placeholder='Street' />
-                    <input className={classes.Input} type='text' name='postal' placeholder='Postal' />
+                <Input type='text' name='name' placeholder='Name' inputtype='input' />
+                <Input type='email' name='email' placeholder='Email' inputtype='input' />
+                <Input type='text' name='street' placeholder='Street' inputtype='input' />
+                <Input type='text' name='postal' placeholder='Postal' inputtype='input' />
 
-                    <Button btnType='Success' clicked={this.orderHandler}>ORDER NOW</Button>
+                <Button btnType='Success' clicked={this.orderHandler}>ORDER NOW</Button>
 
                 </form>
         )

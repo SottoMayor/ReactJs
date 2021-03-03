@@ -8,11 +8,6 @@
     box-shadow: 0 2px 3px #eee;
 }
 
-.Input{
-    display: block;
-    margin: 5px auto;
-}
-
 @media (min-width: 600px){
 
     .ContactData{
