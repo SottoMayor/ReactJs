@@ -105,7 +105,7 @@ class contactData extends Component {
             <form>
 
                 {
-                    Object.keys(this.state.orderForm).map(item => {
+                    Object.keys(this.state.orderForm).map(item => { console.log(item);
                         return <Input key={item} elementType={this.state.orderForm[item].elementType} 
                         elementConfig={this.state.orderForm[item].elementConfig} 
                         value={this.state.orderForm[item].value} />

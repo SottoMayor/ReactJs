@@ -9,10 +9,20 @@ const Input = (props) => {
     switch (props.elementType){
         case('input'):
             inputElement = <input className={classes.InputElement} {...props.elementConfig} defaultValue={props.value}/>;
-            console.log(props)
             break;
         case('textarea'):
             inputElement = <textarea className={classes.InputElement} {...props.elementConfig} defaultValue={props.value}/>;
+            break;
+        case('select'):
+        inputElement = <select className={classes.InputElement} {...props.elementConfig} defaultValue={props.value}>
+
+                            {
+                                props.elementConfig.options.map(obj => {
+                                    return <option key={obj.value} value={obj.value}> {obj.displayValue} </option>
+                                })
+                            }
+
+                        </select>;
             break;
         default:
             inputElement = <input className={classes.InputElement} {...props.elementConfig} defaultValue={props.value}/>
