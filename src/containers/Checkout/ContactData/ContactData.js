@@ -62,7 +62,7 @@ class contactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: ''
+                value: 'This is a delivary fee!'
             }
         },
         loading: false
@@ -99,13 +99,18 @@ class contactData extends Component {
 
     render() {
 
+        
+
         let form = (
             <form>
 
-                <Input type='text' name='name' placeholder='Name' inputtype='input' />
-                <Input type='email' name='email' placeholder='Email' inputtype='input' />
-                <Input type='text' name='street' placeholder='Street' inputtype='input' />
-                <Input type='text' name='postal' placeholder='Postal' inputtype='input' />
+                {
+                    Object.keys(this.state.orderForm).map(item => {
+                        return <Input key={item} elementType={this.state.orderForm[item].elementType} 
+                        elementConfig={this.state.orderForm[item].elementConfig} 
+                        value={this.state.orderForm[item].value} />
+                    })
+                }
 
                 <Button btnType='Success' clicked={this.orderHandler}>ORDER NOW</Button>
 
