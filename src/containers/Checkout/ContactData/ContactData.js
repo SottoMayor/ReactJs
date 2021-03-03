@@ -13,11 +13,57 @@ import Input from '../../../components/UI/Input/Input';
 class contactData extends Component {
 
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postal: ''
+        orderForm:{
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type:  'text',
+                    placeholder: 'Your name'
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type:  'text',
+                    placeholder: 'Street'
+                },
+                value: ''
+            },
+            zipCode:{
+                elementType: 'input',
+                elementConfig: {
+                    type:  'text',
+                    placeholder: 'ZIP Code'
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type:  'text',
+                    placeholder: 'Country'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type:  'email',
+                    placeholder: 'Email'
+                },
+                value: ''
+            },
+            deliveryFee: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'fastest', displayValue: 'Fastest'},
+                        {value: 'cheapest', displayValue: 'Cheapest'}
+                    ]
+                },
+                value: ''
+            }
         },
         loading: false
     }
@@ -32,17 +78,7 @@ class contactData extends Component {
 
         const order = {
             ingredients : this.props.ingredients,
-            price : this.props.price,
-            customer: {
-                name: 'David',
-                address: {
-                    number: 0,
-                    street: 'Dummy',
-                    city: 'Lorem Ipsum'
-                },
-                email: 'test@test.com',
-            },
-            deliveryFee: 'free'
+            price : this.props.price
         }
 
         axios.post('/orders.json', order)
