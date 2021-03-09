@@ -20,7 +20,7 @@ class contactData extends Component {
                     type:  'text',
                     placeholder: 'Your name'
                 },
-                value: ''
+                value: '' 
             },
             street: {
                 elementType: 'input',
@@ -62,7 +62,7 @@ class contactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: 'This is a delivary fee!'
+                value: 'This is a delivery fee!'
             }
         },
         loading: false
@@ -76,9 +76,18 @@ class contactData extends Component {
             loading: true
         })
 
+        const formData = {};
+        for (let formElementIdentifier in this.state.orderForm){
+            formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
+            
+        }
+
+        console.log(formData)
+
         const order = {
             ingredients : this.props.ingredients,
-            price : this.props.price
+            price : this.props.price,
+            orderData: formData
         }
 
         axios.post('/orders.json', order)
@@ -97,22 +106,36 @@ class contactData extends Component {
 
     };
 
-    render() {
+    inputValueHandler = (event, inputIdentifier) => {
+        
+        const updatedOrderForm = {...this.state.orderForm}
+        const updatedElementForm = {...updatedOrderForm[inputIdentifier]}
 
+        updatedElementForm.value = event.target.value;
+        updatedOrderForm[inputIdentifier] = updatedElementForm;
+
+        this.setState({orderForm: updatedOrderForm})
         
 
+    };
+    
+
+
+    render() {
+
         let form = (
-            <form>
+            <form onSubmit={this.orderHandler} autoComplete="off">
 
                 {
-                    Object.keys(this.state.orderForm).map(item => { console.log(item);
+                    Object.keys(this.state.orderForm).map(item => {
                         return <Input key={item} elementType={this.state.orderForm[item].elementType} 
                         elementConfig={this.state.orderForm[item].elementConfig} 
-                        value={this.state.orderForm[item].value} />
+                        value={this.state.orderForm[item].value} 
+                        changed={(event) => {this.inputValueHandler(event, item)}}/>
                     })
                 }
 
-                <Button btnType='Success' clicked={this.orderHandler}>ORDER NOW</Button>
+                <Button btnType='Success'>ORDER NOW</Button>
 
                 </form>
         )
