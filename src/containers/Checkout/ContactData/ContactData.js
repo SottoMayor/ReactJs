@@ -24,7 +24,8 @@ class contactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             street: {
                 elementType: 'input',
@@ -36,7 +37,8 @@ class contactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             zipCode:{
                 elementType: 'input',
@@ -50,7 +52,8 @@ class contactData extends Component {
                     minLength: 5,
                     maxLength: 5
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             country: {
                 elementType: 'input',
@@ -62,7 +65,8 @@ class contactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             email: {
                 elementType: 'input',
@@ -74,7 +78,8 @@ class contactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             deliveryFee: {
                 elementType: 'select',
@@ -161,6 +166,7 @@ class contactData extends Component {
 
         updatedElementForm.value = event.target.value;
         updatedElementForm.valid = this.checkValidity(updatedElementForm.value, updatedElementForm.validation);
+        updatedElementForm.touched = true;
         updatedOrderForm[inputIdentifier] = updatedElementForm;
         console.log(updatedOrderForm)
 
@@ -176,11 +182,13 @@ class contactData extends Component {
             <form onSubmit={this.orderHandler} autoComplete="off">
 
                 {
+                    
                     Object.keys(this.state.orderForm).map(item => {
                         return <Input key={item} elementType={this.state.orderForm[item].elementType} 
                         elementConfig={this.state.orderForm[item].elementConfig} 
                         value={this.state.orderForm[item].value}
-                        invalid={!this.state.orderForm[item].valid} 
+                        invalid={!this.state.orderForm[item].valid}
+                        touched={this.state.orderForm[item].touched} 
                         changed={(event) => {this.inputValueHandler(event, item)}}/>
 
                     })
