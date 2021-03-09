@@ -84,7 +84,11 @@ class contactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: 'This is a delivery fee!'
+                value: 'This is a delivery fee!',
+                validation: {
+                    required: false
+                },
+                valid: true
             }
         },
         loading: false
@@ -131,18 +135,18 @@ class contactData extends Component {
 
     checkValidity = (value, rules) => {
 
-        let isValid = false
+        let isValid = true
 
         if(rules.required){
-            isValid = value.trim() !== '';
+            isValid = value.trim() !== '' && isValid;
         }
 
         if(rules.minLength){
-            isValid = value.length >= rules.minLength
+            isValid = value.length >= rules.minLength && isValid;
         }
 
         if(rules.maxLength && isValid){
-            isValid = value.length <= rules.maxLength
+            isValid = value.length <= rules.maxLength && isValid
         }
 
         return isValid;
@@ -156,9 +160,9 @@ class contactData extends Component {
         const updatedElementForm = {...updatedOrderForm[inputIdentifier]}
 
         updatedElementForm.value = event.target.value;
-        updatedElementForm.valid = this.checkValidity(updatedElementForm.value, updatedElementForm.validation)
+        updatedElementForm.valid = this.checkValidity(updatedElementForm.value, updatedElementForm.validation);
         updatedOrderForm[inputIdentifier] = updatedElementForm;
-        console.log(updatedOrderForm);
+        console.log(updatedOrderForm)
 
         this.setState({orderForm: updatedOrderForm})
         
@@ -175,8 +179,10 @@ class contactData extends Component {
                     Object.keys(this.state.orderForm).map(item => {
                         return <Input key={item} elementType={this.state.orderForm[item].elementType} 
                         elementConfig={this.state.orderForm[item].elementConfig} 
-                        value={this.state.orderForm[item].value} 
+                        value={this.state.orderForm[item].value}
+                        invalid={!this.state.orderForm[item].valid} 
                         changed={(event) => {this.inputValueHandler(event, item)}}/>
+
                     })
                 }
 
