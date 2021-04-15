@@ -1,3 +1,9 @@
+# About This Project
+
+This Project is over. The goal was to take the first steps with technology, learn its fundamental characteristics and test the learning curve with React. We can say that all objectives have been successfully achieved!
+Here, we created an amazing burguer builder!
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
