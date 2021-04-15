@@ -1,4 +1,4 @@
-# About This Project
+# About This Project - BURGUER BUILDER PROJECT.
 
 This Project is over. The goal was to take the first steps with technology, learn its fundamental characteristics and test the learning curve with React. We can say that all objectives have been successfully achieved!
 
