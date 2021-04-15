@@ -1,6 +1,11 @@
 # About This Project
 
 This Project is over. The goal was to take the first steps with technology, learn its fundamental characteristics and test the learning curve with React. We can say that all objectives have been successfully achieved!
+
+
+The approach we used here was older. We use class-based components to define states and we use components which extends from React.
+
+
 Here, we created an amazing burguer builder!
 
 
